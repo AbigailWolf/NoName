@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cu4x4yikbnd5m"
+path="res://.godot/imported/Intro Theme.ogg-a4278c5c2625c193f66919038e425a4e.oggvorbisstr"
+
+[deps]
+
+source_file="res://items/assets/audio/Intro Theme.ogg"
+dest_files=["res://.godot/imported/Intro Theme.ogg-a4278c5c2625c193f66919038e425a4e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
