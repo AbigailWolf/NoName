@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn8wdog4up35d"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_7f2kt"]
+[ext_resource type="Texture2D" uid="uid://b7ydf40dopvbm" path="res://Player character/rabbitleftright.png" id="2_a4s5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0q2b"]
+
+[sub_resource type="Animation" id="Animation_4yskr"]
+resource_name = "Right walk cycle"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_dbubq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iiedd"]
+_data = {
+"RESET": SubResource("Animation_dbubq"),
+"Right walk cycle": SubResource("Animation_4yskr")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_7f2kt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a0q2b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a4s5d")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iiedd")
+}
