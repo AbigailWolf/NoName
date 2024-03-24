@@ -9,7 +9,8 @@
 size = Vector2(24, 18)
 
 [sub_resource type="Animation" id="Animation_4ca44"]
-length = 0.001
+length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,10 +30,10 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [5]
+"values": [0, 1, 2, 3, 4]
 }
 
 [sub_resource type="Animation" id="Animation_i1ajs"]
@@ -107,18 +108,18 @@ script = ExtResource("1_f6tqf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_u8h1a")
-hframes = 6
-frame = 5
+hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 5)
 shape = SubResource("RectangleShape2D_a505u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_q267v")
 }
+autoplay = "walk"
+speed_scale = 0.5
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_a0c0k")

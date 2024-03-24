@@ -9,7 +9,7 @@ var facing := 1
 
 func _physics_process(delta: float) -> void:
 	velocity.y= gravity * delta
-	velocity.x = facing * speed
+	velocity.x = facing * speed * 0.3
 	$Sprite2D.flip_h = velocity.x > 0
 	
 	move_and_slide()
