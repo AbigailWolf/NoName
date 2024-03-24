@@ -2,7 +2,6 @@ extends Node2D
 
 class_name LevelBase
 
-
 @onready var player: Player = $Player
 @onready var spawn_point := $SpawnPoint
 
@@ -63,13 +62,16 @@ func create_ladders() -> void:
 func _on_item_picked_up() -> void:
 	$PickupSound.play()
 	score += 1
+	var one = Player.bullet_time
+	Player.bullet_time += 0.2
+	var two = Player.bullet_time
+	var three = Player.bullet_time
 
 func _on_door_entered(body: PhysicsBody2D) -> void:
-	get_tree().change_scene_to_file("res://levels/First.tscn")
+	GameState.next_level()
 
 func _on_player_died() -> void:
-	var game_state = preload("res://levels/GameState.gd").instance()
-	game_state.restart()
+	GameState.restart()
 
 func _on_ladders_body_entered(body: Node2D) -> void:
 	(body as Player).is_on_ladder = true

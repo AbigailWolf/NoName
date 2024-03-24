@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwmafsa1vva6a"]
+
+[ext_resource type="Script" path="res://levels/Title_screen.gd" id="1_ntbdo"]
+[ext_resource type="Texture2D" uid="uid://bscwrqlcpw6r4" path="res://assets/title screen background.png" id="2_xhn34"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_ntbdo")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 78.0
+offset_right = 1084.0
+offset_bottom = 278.0
+theme_override_font_sizes/font_size = 100
+text = "Game Jam"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 709.0
+offset_top = 287.0
+offset_right = 949.0
+offset_bottom = 563.0
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Button3")
+text = "Start"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_xhn34")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

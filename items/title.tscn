@@ -1,13 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvvia3c7xhx0n"]
+[gd_scene load_steps=11 format=3 uid="uid://cvvia3c7xhx0n"]
 
 [ext_resource type="Script" path="res://ui/title.gd" id="1_elv52"]
-[ext_resource type="Texture2D" uid="uid://bscwrqlcpw6r4" path="res://assets/title screen background.png" id="2_lgyns"]
+[ext_resource type="Texture2D" uid="uid://cokbnb78vwro2" path="res://assets/environment/back.png" id="1_tiunn"]
+[ext_resource type="Texture2D" uid="uid://dqhi6jt116j3y" path="res://assets/environment/middle.png" id="2_esa8l"]
 [ext_resource type="FontFile" uid="uid://dn5ejfrfxcj1w" path="res://assets/Kenney Thick.ttf" id="3_tqpql"]
 [ext_resource type="AudioStream" uid="uid://cu4x4yikbnd5m" path="res://assets/audio/Intro Theme.ogg" id="5_j0u3e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kjpu0"]
 font = ExtResource("3_tqpql")
 font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_oi263"]
+font = ExtResource("3_tqpql")
+font_size = 48
 
 [sub_resource type="Animation" id="Animation_lci22"]
 length = 0.001
@@ -26,10 +31,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/path = NodePath("Message:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -53,10 +82,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/path = NodePath("Message:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -69,14 +122,13 @@ _data = {
 "intro": SubResource("Animation_skq1v")
 }
 
-[node name="Control" type="Control" node_paths=PackedStringArray("shortcut_context")]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-shortcut_context = NodePath("VBoxContainer/Button")
 script = ExtResource("1_elv52")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -86,8 +138,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_lgyns")
+texture = ExtResource("1_tiunn")
 stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -368.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_esa8l")
+stretch_mode = 1
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -96,14 +160,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 216.0
-offset_top = 282.0
-offset_right = 936.0
-offset_bottom = 366.0
+offset_left = -360.0
+offset_top = -42.0
+offset_right = 360.0
+offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game Jam"
+text = "Jungle Jump"
 label_settings = SubResource("LabelSettings_kjpu0")
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -417.0
+offset_top = -57.0
+offset_right = 417.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press Space to Play"
+label_settings = SubResource("LabelSettings_oi263")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -114,23 +193,3 @@ autoplay = "intro"
 [node name="IntroSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_j0u3e")
 autoplay = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 709.0
-offset_top = 287.0
-offset_right = 949.0
-offset_bottom = 563.0
-alignment = 1
-
-[node name="Button" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../Button3")
-text = "Start"
-
-[node name="Button3" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Quit Game"
-
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
